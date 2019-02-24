@@ -65,11 +65,11 @@ impl_rdp! {
 
         /* The specification says upper case letters only, but enough deployed
          * nodes use lower case names for it to be an annoying breaking change.
-         * To compromise, we will accept lower case letters in node names, but
-         * convert them to upper case in the parser, so they're stored and
-         * displayed as all upper case thereafter.
+         *
+         * This is a odd mode, and we are running odd specs!
          */
-        node_name_content   =  { (letter | digit)* }
+        node_name_symbol    = _{ ["-"] | ["/"] | ["."] | ["_"] | ["+"] | ["#"] }
+        node_name_content   =  { (letter | digit | node_name_symbol)* }
         node_name           =  { node_name_content }
 
         path        =  { ["["] ~ node_name ~ ( [","] ~ node_name )* ~ ["]"] }
@@ -193,7 +193,7 @@ impl_rdp! {
         }
 
         _node_name(&self) -> String {
-            (&name: node_name_content) => name.to_owned().to_uppercase()
+            (&name: node_name_content) => name.to_owned()
         }
 
         _path(&self) -> Vec<String> {

@@ -2,7 +2,7 @@
 name = "ukhasnet-parser"
 description = "A parser for the UKHASnet protocol"
 version = "0.4.0"
-authors = ["Adam Greig <adam@adamgreig.com>"]
+authors = ["Adam Greig <adam@adamgreig.com>", "Odd Stråbø <oddstr13@openshell.no>"]
 repository = "https://github.com/adamgreig/ukhasnet-parser"
 homepage = "https://github.com/adamgreig/ukhasnet-parser"
 license = "MIT"
